@@ -1,15 +1,22 @@
-const express = require("express");
-const cors = require("cors");
+// index.js — ES module format for Fly.io
+
+import express from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
-app.use(cors());
+const PORT = process.env.PORT || 5000;
+
+// Middleware
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("✅ Railway deployment working!");
+// Sample route
+app.get('/', (req, res) => {
+  res.send('🚀 Server is running on Fly.io!');
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, "0.0.0.0", () => {
+// Start server
+app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
