@@ -1,4 +1,4 @@
-> **Music Playlist Manager Backend API** — A Node.js + Express server for managing music playlists and songs, deployed using Docker and Fly.io.
+> **Music Playlist Manager Backend API** — A Node.js + Express server,PostgreSQL,GraphQL,Prisma for managing music playlists and songs, deployed using Docker and Fly.io.
 
 ---
 
