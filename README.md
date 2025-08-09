@@ -1,5 +1,3 @@
-Here’s a professional, clear README.md tailored for your Node.js + GraphQL + Prisma + Neon project:
-
 ---
 
 ````markdown
