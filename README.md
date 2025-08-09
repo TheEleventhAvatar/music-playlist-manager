@@ -1,147 +1,152 @@
-````markdown
-# Music Playlist API
+Got it — I’ll make the GitHub description and README reflect that this is **currently a backend API** (not fullstack yet), with Docker + Fly.io deployment instructions.
 
-A GraphQL API built with Node.js, Apollo Server, Prisma ORM, and PostgreSQL hosted on Neon.
+Here’s your updated **GitHub description**:
+
+> **Music Playlist Manager Backend API** — A Node.js + Express server for managing music playlists and songs, deployed using Docker and Fly.io.
+
+---
+
+### README.md (Updated)
+
+```markdown
+# Music Playlist Manager Backend API
+
+A simple **backend API** built with **Node.js** and **Express** for managing songs and playlists.  
+Deployed using **Docker** and **Fly.io**.
 
 ---
 
 ## 🚀 Features
-
-- Add and list songs with details (title, artist, album)
-- Create and list playlists
-- Uses Prisma for database modeling and migrations
-- PostgreSQL database hosted on Neon with separate dev and production branches
-
----
-
-## 🛠️ Tech Stack
-
-- Node.js
-- Apollo Server (GraphQL)
-- Prisma ORM
-- PostgreSQL (Neon)
-- dotenv for environment variables
+- Add, list, and manage songs (title, artist, album cover, audio link)
+- Create and manage playlists
+- REST API endpoints for easy integration with any frontend
+- Environment variables for configuration using `dotenv`
+- Containerized using Docker for portability
+- Deployed to Fly.io
 
 ---
 
-## 📦 Installation & Setup
+## 📂 Project Structure
+```
 
-1. Clone the repo:
+.
+├── index.js          # Entry point for the server
+├── package.json      # Dependencies and scripts
+├── Dockerfile        # Docker image build instructions
+├── fly.toml          # Fly.io deployment config
+└── .env              # Environment variables (not committed to GitHub)
 
-```bash
-git clone https://github.com/YourUsername/music-playlist-manager.git
-cd music-playlist-manager
 ````
 
-2. Install dependencies:
+---
+
+## 🛠️ Local Development
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/<your-username>/<repo-name>.git
+cd <repo-name>
+````
+
+2. **Install dependencies**
 
 ```bash
 npm install
 ```
 
-3. Create a `.env` file in the project root based on `.env.example`:
+3. **Set environment variables**
+   Create a `.env` file:
 
 ```env
-DATABASE_URL="your_neon_database_connection_string"
-PORT=4000
+PORT=3000
 ```
 
-4. Run Prisma migrations to set up the database schema:
+4. **Run locally**
 
 ```bash
-npx prisma migrate dev --name init
+npm start
 ```
 
-5. Start the development server:
+Server will run on `http://localhost:3000`
+
+---
+
+## 🐳 Docker Setup
+
+1. **Build the image**
 
 ```bash
-node src/index.js
+docker build -t playlist-api .
 ```
 
-6. Open your browser at [http://localhost:4000](http://localhost:4000) to access the Apollo Sandbox UI.
+2. **Run the container**
 
----
-
-## 🔍 Example GraphQL Queries & Mutations
-
-### Add a Song
-
-```graphql
-mutation {
-  addSong(title: "Shape of You", artist: "Ed Sheeran", album: "Divide") {
-    id
-    title
-    artist
-    album
-  }
-}
-```
-
-### Get All Songs
-
-```graphql
-query {
-  songs {
-    id
-    title
-    artist
-    album
-  }
-}
-```
-
-### Create a Playlist
-
-```graphql
-mutation {
-  createPlaylist(name: "My Favorite Hits") {
-    id
-    name
-  }
-}
-```
-
-### Get All Playlists
-
-```graphql
-query {
-  playlists {
-    id
-    name
-  }
-}
+```bash
+docker run -p 3000:3000 --env-file .env playlist-api
 ```
 
 ---
 
-## 🌐 Deployment
+## ☁️ Deploying to Fly.io
 
-* Backend hosted on [Railway](https://railway.app) (or your chosen platform).
-* Connects to Neon PostgreSQL production branch.
-* Set environment variables (`DATABASE_URL` and `PORT`) in your deployment platform.
+1. **Install Fly CLI**
+
+```bash
+curl -L https://fly.io/install.sh | sh
+```
+
+Restart your shell so `fly` command is available.
+
+2. **Login to Fly.io**
+
+```bash
+fly auth login
+```
+
+3. **Create and configure your app**
+
+```bash
+fly launch
+```
+
+Choose your region and confirm creation.
+
+4. **Deploy**
+
+```bash
+fly deploy
+```
+
+5. **Check logs**
+
+```bash
+fly logs
+```
+
+Your app will be live at:
+
+```
+https://<your-app-name>.fly.dev
+```
 
 ---
 
-## 🤝 Contributing
+## 📌 Notes
 
-Feel free to open issues or submit pull requests.
+* This repo is **only the backend API**. A frontend can be built with React, Vue, etc., and connected to these endpoints.
+* Docker is used to ensure the app runs the same locally and on Fly.io.
+* Fly.io automatically builds and runs the Docker container in production.
 
 ---
 
-## 📄 License
+## 📜 License
 
 MIT License
 
----
-
-## 📞 Contact
-
-Your Name – [your.email@example.com](mailto:your.email@example.com)
-Project Link: [https://github.com/YourUsername/music-playlist-manager](https://github.com/YourUsername/music-playlist-manager)
-
 ```
 
 ---
 
-If you want, I can help you customize it further or add badges for build status, license, etc.
+If you want, I can now also make you a **minimal React frontend** so your app becomes *truly* fullstack and the README can reflect that.  
+Do you want me to add that?
 ```
