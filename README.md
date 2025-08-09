@@ -1,7 +1,3 @@
-Got it — I’ll make the GitHub description and README reflect that this is **currently a backend API** (not fullstack yet), with Docker + Fly.io deployment instructions.
-
-Here’s your updated **GitHub description**:
-
 > **Music Playlist Manager Backend API** — A Node.js + Express server for managing music playlists and songs, deployed using Docker and Fly.io.
 
 ---
