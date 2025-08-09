@@ -1,5 +1,3 @@
----
-
 ````markdown
 # Music Playlist API
 
