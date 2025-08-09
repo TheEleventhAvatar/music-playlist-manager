@@ -1,55 +1,21 @@
-require('dotenv').config();
-const { ApolloServer, gql } = require('apollo-server');
-const { PrismaClient } = require('@prisma/client');
+// Import dependencies
+const express = require("express");
+const cors = require("cors");
 
-const prisma = new PrismaClient();
+const app = express();
 
-const typeDefs = gql`
-  type Song {
-    id: ID!
-    title: String!
-    artist: String!
-    album: String
-  }
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-  type Playlist {
-    id: ID!
-    name: String!
-  }
+// Example route
+app.get("/", (req, res) => {
+  res.send("✅ Railway deployment working!");
+});
 
-  type Query {
-    songs: [Song!]
-    playlists: [Playlist!]
-  }
-
-  type Mutation {
-    addSong(title: String!, artist: String!, album: String): Song!
-    createPlaylist(name: String!): Playlist!
-  }
-`;
-
-
-const resolvers = {
-  Query: {
-    songs: () => prisma.song.findMany(),
-    playlists: () => prisma.playlist.findMany(),
-  },
-  Mutation: {
-    addSong: (_, args) => prisma.song.create({ data: args }),
-    createPlaylist: (_, { name }) => prisma.playlist.create({ data: { name } }),
-  }
-};
-
+// Use Railway's PORT or default to 5000 for local dev
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
-  console.log(`🚀 Server ready at http://0.0.0.0:${PORT}/`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  persistedQueries: false
-});
-
-
-
-
