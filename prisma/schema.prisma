@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Song {
+  id        Int            @id @default(autoincrement())
+  title     String
+  artist    String
+  album     String?
+
+  playlistSongs PlaylistSong[]
+}
+
+model Playlist {
+  id            Int            @id @default(autoincrement())
+  name          String
+
+  playlistSongs PlaylistSong[]
+}
+
+model PlaylistSong {
+  playlistId Int
+  songId     Int
+
+  playlist Playlist @relation(fields: [playlistId], references: [id])
+  song     Song     @relation(fields: [songId], references: [id])
+
+  @@id([playlistId, songId])
+}
+
