@@ -40,9 +40,8 @@ const resolvers = {
   }
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
-
-server.listen({ port: 5000, host: '0.0.0.0' }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server ready at http://localhost:${PORT}`);
 });
 
