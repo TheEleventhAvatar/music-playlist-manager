@@ -140,9 +140,3 @@ https://<your-app-name>.fly.dev
 MIT License
 
 ```
-
----
-
-If you want, I can now also make you a **minimal React frontend** so your app becomes *truly* fullstack and the README can reflect that.  
-Do you want me to add that?
-```
